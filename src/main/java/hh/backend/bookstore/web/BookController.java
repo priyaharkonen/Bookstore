@@ -13,6 +13,7 @@ import hh.backend.bookstore.domain.BookRepository;
 
 
 //Request: http://localhost:8080/index
+// Request: http://localhost:8080/h2-console
 
 @Controller 
 public class BookController {
@@ -22,13 +23,5 @@ public class BookController {
     public BookController(BookRepository bookRepository){
         this.repository = bookRepository;
     }
-
-    //Kirjat -etusivu (index)
-    // @RequestMapping(value = "/index", method=RequestMethod.GET)
-    // public String getBooks(Model model) {
-    //     model.addAttribute("book", new Book());
-    //     return "index";
-    // }
-    
 
 }
