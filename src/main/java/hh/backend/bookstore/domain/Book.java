@@ -1,11 +1,13 @@
 package hh.backend.bookstore.domain;
+
+
 public class Book {
 
     //attribuutit
     private String title;
     private String author;
     private int publicationYear;
-    private int isbn;
+    private String isbn;
     private double price;
 
     //Konstruktiorit
@@ -14,11 +16,11 @@ public class Book {
         this.title = null;
         this.author = null;
         this.publicationYear = 0;
-        this.isbn = 0;
+        this.isbn = null;
         this.price = 0;
     }
 
-    public Book(String title, String author, int publicationYear, int isbn, double price) {
+    public Book(String title, String author, int publicationYear, String isbn, double price) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
@@ -39,7 +41,7 @@ public class Book {
         this.publicationYear = publicationYear;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
@@ -60,7 +62,7 @@ public class Book {
         return publicationYear;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
