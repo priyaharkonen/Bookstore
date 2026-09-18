@@ -1,5 +1,4 @@
 package hh.backend.bookstore.domain;
-
 public class Book {
 
     //attribuutit
@@ -78,4 +77,3 @@ public class Book {
     
 
 }
-
