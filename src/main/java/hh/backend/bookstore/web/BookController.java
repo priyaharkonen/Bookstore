@@ -12,8 +12,8 @@ import hh.backend.bookstore.domain.Book;
 import hh.backend.bookstore.domain.BookRepository;
 
 
-//Request: http://localhost:8080/index
-// Request: http://localhost:8080/h2-console
+
+//Request: http://localhost:8080/h2-console
 
 @Controller 
 public class BookController {
