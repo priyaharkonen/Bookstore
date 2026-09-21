@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import hh.backend.bookstore.domain.Book;
 import hh.backend.bookstore.domain.BookRepository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 
@@ -31,5 +32,26 @@ public class BookController {
         model.addAttribute("books", repository.findAll());
         return "booklist";
     }
+
+    // Add book request: http://localhost:8080/add
+    @GetMapping("/add")
+    public String addBook(Model model) {
+        model.addAttribute("book", new Book());
+        return "addbook";
+    }
+    
+    // Save book request: http://localhost:8080/save
+    @GetMapping("/save")
+    public String saveBook(Book book) {
+        repository.save(book);
+        return "redirect:booklist";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteBook(@PathVariable("id") Long bookId, Model model ) {
+        repository.deleteById(bookId);
+        return "redirect:../booklist";
+    }
+    
 
 }
