@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import hh.backend.bookstore.domain.Book;
 import hh.backend.bookstore.domain.BookRepository;
+import hh.backend.bookstore.domain.CategoryRepository;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,17 +25,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller 
 public class BookController {
 
+    private final CategoryRepository categoryRepository;
     private final CommandLineRunner book;
-    private BookRepository repository;
+    private final BookRepository bookRepository;
 
-    public BookController(BookRepository bookRepository, CommandLineRunner book){
-        this.repository = bookRepository;
+    public BookController(BookRepository bookRepository, CategoryRepository categoryRepository,CommandLineRunner book){
+        this.bookRepository = bookRepository;
+        this.categoryRepository = categoryRepository;
         this.book = book;
     }
     // Booklist request: http://localhost:8080/allbooks
     @GetMapping("/allbooks")
     public String bookList(Model model) {
-        model.addAttribute("books", repository.findAll());
+        model.addAttribute("books", bookRepository.findAll());
         return "booklist";
     }
 
@@ -41,28 +45,27 @@ public class BookController {
     @GetMapping("/add")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
+        model.addAttribute("category", categoryRepository.findAll());
         return "addbook";
     }
     
     // Save book request: http://localhost:8080/save
     @PostMapping("/save")
     public String saveBook(Book book) {
-        repository.save(book);
+        bookRepository.save(book);
         return "redirect:/allbooks";
     }
 
     @GetMapping("/edit/{id}")
     public String editBook(@PathVariable("id") Long bookId, Model model) {
-        model.addAttribute("book", repository.findById(bookId));
+        model.addAttribute("book", bookRepository.findById(bookId));
         return "editbook";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteBook(@PathVariable("id") Long bookId, Model model ) {
-        repository.deleteById(bookId);
+        bookRepository.deleteById(bookId);
         return "redirect:../allbooks";
     }
     
-    
-
 }
