@@ -2,7 +2,6 @@ package hh.backend.bookstore.web;
 
 import java.util.ArrayList;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,13 +25,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class BookController {
 
     private final CategoryRepository categoryRepository;
-    private final CommandLineRunner book;
     private final BookRepository bookRepository;
 
-    public BookController(BookRepository bookRepository, CategoryRepository categoryRepository,CommandLineRunner book){
+    public BookController(BookRepository bookRepository, CategoryRepository categoryRepository){
         this.bookRepository = bookRepository;
         this.categoryRepository = categoryRepository;
-        this.book = book;
+
     }
     // Booklist request: http://localhost:8080/allbooks
     @GetMapping("/allbooks")
@@ -45,7 +43,7 @@ public class BookController {
     @GetMapping("/add")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
-        model.addAttribute("category", categoryRepository.findAll());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
     

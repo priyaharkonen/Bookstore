@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 
 import hh.backend.bookstore.domain.Book;
 import hh.backend.bookstore.domain.BookRepository;
+import hh.backend.bookstore.domain.Category;
+import hh.backend.bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -31,6 +33,20 @@ public class BookstoreApplication {
 			log.info("fetch all books");
 			for (Book book: bookRepository.findAll()) {
 				log.info(book.toString());
+			}
+		};
+	}
+	
+	@Bean
+	public CommandLineRunner category(CategoryRepository categoryRepository) {
+		return (args) -> {
+			log.info("Save categories");
+			categoryRepository.save(new Category("Psykologinen jännitys"));
+			categoryRepository.save(new Category("Dekkari"));
+
+			log.info("fetch all categories");
+			for (Category category: categoryRepository.findAll()) {
+				log.info(category.toString());
 			}
 		};
 	}
