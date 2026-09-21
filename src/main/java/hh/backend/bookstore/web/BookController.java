@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 
-//Request: http://localhost:8080/h2-console
+//H2-console request: http://localhost:8080/h2-console
 
 @Controller 
 public class BookController {
@@ -25,7 +25,7 @@ public class BookController {
     public BookController(BookRepository bookRepository){
         this.repository = bookRepository;
     }
-
+    // Booklist request: http://localhost:8080/booklist
     @GetMapping("/booklist")
     public String bookList(Model model) {
         model.addAttribute("books", repository.findAll());
