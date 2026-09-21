@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import hh.backend.bookstore.domain.Book;
 import hh.backend.bookstore.domain.BookRepository;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 
 
@@ -22,6 +24,12 @@ public class BookController {
 
     public BookController(BookRepository bookRepository){
         this.repository = bookRepository;
+    }
+
+    @GetMapping("/booklist")
+    public String bookList(Model model) {
+        model.addAttribute("books", repository.findAll());
+        return "booklist";
     }
 
 }
