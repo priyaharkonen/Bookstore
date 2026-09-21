@@ -22,14 +22,14 @@ public class BookstoreApplication {
 	}
 
 	@Bean 
-	public CommandLineRunner book(BookRepository repository) {
+	public CommandLineRunner book(BookRepository bookRepository) {
 		return (args) -> {
 			log.info("save books");
-			repository.save(new Book("Pimeän risteys", "Leena Lehtolainen", 2023, "978-952-04-5035-9", 12.95));
-			repository.save(new Book("Vuokralainen", "Freida McFadden", 2026, "978-951-1-54478-4", 29.95));
+			bookRepository.save(new Book("Pimeän risteys", "Leena Lehtolainen", 2023, "978-952-04-5035-9", 12.95));
+			bookRepository.save(new Book("Vuokralainen", "Freida McFadden", 2026, "978-951-1-54478-4", 29.95));
 
 			log.info("fetch all books");
-			for (Book book: repository.findAll()) {
+			for (Book book: bookRepository.findAll()) {
 				log.info(book.toString());
 			}
 		};
