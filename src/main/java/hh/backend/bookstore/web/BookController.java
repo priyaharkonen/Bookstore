@@ -25,8 +25,8 @@ public class BookController {
     public BookController(BookRepository bookRepository){
         this.repository = bookRepository;
     }
-    // Booklist request: http://localhost:8080/booklist
-    @GetMapping("/booklist")
+    // Booklist request: http://localhost:8080/allbooks
+    @GetMapping("/allbooks")
     public String bookList(Model model) {
         model.addAttribute("books", repository.findAll());
         return "booklist";
