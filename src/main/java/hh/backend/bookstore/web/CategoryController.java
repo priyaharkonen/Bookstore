@@ -39,7 +39,7 @@ public class CategoryController {
     }
 
     // Save book request: http://localhost:8080/save
-    @PostMapping("/savecategories")
+    @PostMapping("/savecategory")
     public String saveCategory(Category category) {
         categoryRepository.save(category);
         return "redirect:/allcategories";

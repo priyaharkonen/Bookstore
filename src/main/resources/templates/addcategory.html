@@ -9,7 +9,7 @@
     <h1>Add Category</h1>
     <div>
         <!-- Form -->
-         <form th:object="${category}" th:action="@{save}" action="#" method="post">
+         <form th:object="${category}" th:action="@{savecategory}" action="#" method="post">
             <label for="name">Name</label>
             <input type="text" th:field="*{name}" />
             <input type="submit" value="Save"></input>
