@@ -53,7 +53,7 @@ public class Category {
         this.books = books;
     }
 
-    // toString() ilman kirjalista -attribuuttia.
+    // toString() ilman lista -attribuuttia.
     @Override
     public String toString() {
         return "Category [categoryId=" + categoryId + ", name=" + name + "]";

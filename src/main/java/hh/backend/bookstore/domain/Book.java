@@ -27,14 +27,16 @@ public class Book {
     public Book(){}
 
     //Konstruktiorit
-    public Book(String title, String author, int publicationYear, String isbn, double price) {
+    public Book(String title, String author, int publicationYear, String isbn, double price, Category category) {
         super();
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
         this.isbn = isbn;
         this.price = price;
+        this.category = category;
     }
+    
 
     // Getterit ja setterit
     public Long getId() {
@@ -85,14 +87,46 @@ public class Book {
         this.price = price;
     }
 
-    // toString()
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    // toString() muokattuna ohjeiden mukaisesti toimivaan muotoon.
+
     @Override
     public String toString() {
-        return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
+        if(this.category != null)
+            return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
+                + ", isbn=" + isbn + ", price=" + price + " category =" + this.getCategory() + "]";
+        else
+            return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
                 + ", isbn=" + isbn + ", price=" + price + "]";
     }
-    
-    
 
-
+    // @Override
+    // public String toString() {
+    //     return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
+    //             + ", isbn=" + isbn + ", price=" + price + ", category=" + category + "]";
+    // }
+    
+   
 }
+    
+
+    // toString() muokattuna ohjeiden mukaisesti toimivaan muotoon.
+
+    // @Override
+    // public String toString() {
+    //     if(this.category != null)
+    //         return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
+    //             + ", isbn=" + isbn + ", price=" + price + " category =" + this.getCategory() + "]";
+    //     else
+    //         return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
+    //             + ", isbn=" + isbn + ", price=" + price + "]";
+    // }
+    
+

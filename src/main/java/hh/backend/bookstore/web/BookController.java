@@ -23,9 +23,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class BookController {
 
     private final BookRepository bookRepository;
+    private final CategoryRepository categoryRepository;
 
-    public BookController(BookRepository bookRepository){
+    public BookController(BookRepository bookRepository, CategoryRepository categoryRepository){
         this.bookRepository = bookRepository;
+        this.categoryRepository = categoryRepository;
 
     }
     // Booklist request: http://localhost:8080/allbooks
@@ -39,6 +41,7 @@ public class BookController {
     @GetMapping("/add")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
 

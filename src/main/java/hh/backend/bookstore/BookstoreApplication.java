@@ -24,11 +24,18 @@ public class BookstoreApplication {
 	}
 
 	@Bean 
-	public CommandLineRunner book(BookRepository bookRepository) {
+	public CommandLineRunner book(BookRepository bookRepository, CategoryRepository categoryRepository) {
 		return (args) -> {
-			log.info("save books");
-			bookRepository.save(new Book("Pimeän risteys", "Leena Lehtolainen", 2023, "978-952-04-5035-9", 12.95));
-			bookRepository.save(new Book("Vuokralainen", "Freida McFadden", 2026, "978-951-1-54478-4", 29.95));
+			log.info("save books with category");
+			Category category1 = new Category("Dekkari");
+			categoryRepository.save(category1);
+			Category category2 = new Category("Psykologinen jännitys");
+			categoryRepository.save(category2);
+			Category category3 = new Category("Komedia");
+			categoryRepository.save(category3);
+
+			bookRepository.save(new Book("Pimeän risteys", "Leena Lehtolainen", 2023, "978-952-04-5035-9", 12.95, category1));
+			bookRepository.save(new Book("Vuokralainen", "Freida McFadden", 2026, "978-951-1-54478-4", 29.95, category2));
 
 			log.info("fetch all books");
 			for (Book book: bookRepository.findAll()) {
@@ -37,19 +44,6 @@ public class BookstoreApplication {
 		};
 	}
 	
-	@Bean
-	public CommandLineRunner category(CategoryRepository categoryRepository) {
-		return (args) -> {
-			log.info("Save categories");
-			categoryRepository.save(new Category("Psykologinen jännitys"));
-			categoryRepository.save(new Category("Dekkari"));
-
-			log.info("fetch all categories");
-			for (Category category: categoryRepository.findAll()) {
-				log.info(category.toString());
-			}
-		};
-	}
 
 }
 
