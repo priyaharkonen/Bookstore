@@ -17,19 +17,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
-
-
 //H2-console request: http://localhost:8080/h2-console
 
 @Controller 
 public class BookController {
 
-    private final CategoryRepository categoryRepository;
     private final BookRepository bookRepository;
 
-    public BookController(BookRepository bookRepository, CategoryRepository categoryRepository){
+    public BookController(BookRepository bookRepository){
         this.bookRepository = bookRepository;
-        this.categoryRepository = categoryRepository;
 
     }
     // Booklist request: http://localhost:8080/allbooks
@@ -43,10 +39,9 @@ public class BookController {
     @GetMapping("/add")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
-        model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
-    
+
     // Save book request: http://localhost:8080/save
     @PostMapping("/save")
     public String saveBook(Book book) {

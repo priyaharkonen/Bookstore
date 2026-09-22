@@ -59,8 +59,5 @@ public class Category {
         return "Category [categoryId=" + categoryId + ", name=" + name + "]";
     }
     
-    
-
-    
 
 }
