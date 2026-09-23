@@ -106,27 +106,6 @@ public class Book {
             return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
                 + ", isbn=" + isbn + ", price=" + price + "]";
     }
-
-    // @Override
-    // public String toString() {
-    //     return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
-    //             + ", isbn=" + isbn + ", price=" + price + ", category=" + category + "]";
-    // }
     
    
 }
-    
-
-    // toString() muokattuna ohjeiden mukaisesti toimivaan muotoon.
-
-    // @Override
-    // public String toString() {
-    //     if(this.category != null)
-    //         return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
-    //             + ", isbn=" + isbn + ", price=" + price + " category =" + this.getCategory() + "]";
-    //     else
-    //         return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
-    //             + ", isbn=" + isbn + ", price=" + price + "]";
-    // }
-    
-
