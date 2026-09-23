@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller 
 public class BookController {
 
+    //Kontrollerin hyödyntämät repositoryt
     private final BookRepository bookRepository;
     private final CategoryRepository categoryRepository;
 
@@ -30,6 +31,7 @@ public class BookController {
         this.categoryRepository = categoryRepository;
 
     }
+
     // Booklist request: http://localhost:8080/allbooks
     @GetMapping("/allbooks")
     public String bookList(Model model) {
