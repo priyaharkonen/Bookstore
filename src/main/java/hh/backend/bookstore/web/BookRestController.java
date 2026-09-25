@@ -40,7 +40,7 @@ public class BookRestController {
         return bookRepository.findById(bookId);
     }
   
-    // REST service: save new student
+    // REST service: save new book
    @PostMapping(value="/books")
     public @ResponseBody Book saveBookRest(@RequestBody Book book){
         return bookRepository.save(book);
