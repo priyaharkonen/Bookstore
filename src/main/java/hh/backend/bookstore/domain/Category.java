@@ -2,6 +2,8 @@ package hh.backend.bookstore.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +16,8 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    // @JsonIgnoreProperties to avoid infinite loop
+    @JsonIgnoreProperties ("category")
     private Long categoryId;
 
     private String name;
