@@ -30,7 +30,7 @@
             <th>Year</th>
             <th>Price</th>
             <th>Category</th>
-            <th sec:authorize="hasRole('ADMIN')"></th>
+            <th sec:authorize="hasAuthority('ADMIN')"></th>
         <!-- Price -muuttujaa ei ole tehtävänannon esimerkissä, mutta lisäsin sen tähän omaani. -->
         </tr>
 
@@ -41,7 +41,7 @@
             <td th:text="${book.publicationYear}"></td>
             <td th:text="${book.price} + ' €'"></td>
             <td th:text="${book.category.name}"></td>
-            <td sec:authorize="hasRole('ADMIN')">
+            <td sec:authorize="hasAuthority('ADMIN')">
                 <a class="btn btn-danger" th:href="@{/delete/{id}(id=${book.id})}">Delete</a>
             </td>
             <td><a th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
