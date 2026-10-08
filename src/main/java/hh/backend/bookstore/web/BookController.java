@@ -2,6 +2,7 @@ package hh.backend.bookstore.web;
 
 import java.util.ArrayList;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,13 +33,20 @@ public class BookController {
 
     }
 
+    
     // Booklist request: http://localhost:8080/allbooks
     @GetMapping("/allbooks")
     public String bookList(Model model) {
         model.addAttribute("books", bookRepository.findAll());
         return "booklist";
     }
-
+    
+    //Login request: http://localhost:8080/login
+    @GetMapping("/login")
+    public String loginSecure() {
+        return "login";
+    }
+    
     // Add book request: http://localhost:8080/add
     @GetMapping("/add")
     public String addBook(Model model) {
@@ -61,6 +69,7 @@ public class BookController {
     }
 
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String deleteBook(@PathVariable("id") Long bookId, Model model ) {
         bookRepository.deleteById(bookId);
         return "redirect:../allbooks";
