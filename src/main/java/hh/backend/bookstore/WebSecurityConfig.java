@@ -16,6 +16,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+/* import static org.springframework.boot.security.autoconfigure.web.servlet.PathRequest.toH2Console; */
+
+
 @Configuration 
 @EnableMethodSecurity(securedEnabled = true)
 public class WebSecurityConfig {
@@ -27,8 +30,19 @@ public class WebSecurityConfig {
         http
         .authorizeHttpRequests( authorize -> authorize
             .requestMatchers("/", "/allbooks").permitAll()
+            /* .requestMatchers(toH2Console()).permitAll() */
             .anyRequest().authenticated()
         )
+        /* 
+        .csrf(csrf -> csrf
+        .ignoringRequestMatchers(toH2Console())
+        )
+
+        .headers(headers -> headers
+            .frameOptions(frameoptions -> frameoptions
+                .disable())
+        )
+        */
         .formLogin( loginForm -> loginForm
             .loginPage("/login")
             .defaultSuccessUrl("/allbooks", true)
@@ -47,29 +61,4 @@ public class WebSecurityConfig {
     }
 
     
-    // @Bean
-    // public UserDetailsService userDetailsService() {
-    //     List<UserDetails> users = new ArrayList<>();
-
-    //     PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
-    //     UserDetails user1 = User
-    //         .withUsername("user")
-    //         .password(passwordEncoder.encode("user"))
-    //         .roles("USER")
-    //         .build();
-        
-    //     users.add(user1);
-
-    //     UserDetails user2 = User
-    //         .withUsername("admin")
-    //         .password(passwordEncoder.encode("admin"))
-    //         .roles("USER", "ADMIN")
-    //         .build();
-
-    //     users.add(user2);
-
-    //     return new InMemoryUserDetailsManager(users);
-        
-    // }
 }
