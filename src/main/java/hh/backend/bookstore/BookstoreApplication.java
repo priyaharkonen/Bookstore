@@ -40,11 +40,15 @@ public class BookstoreApplication {
 			appBookRepository.save(new Book("Pimeän risteys", "Leena Lehtolainen", 2023, "978-952-04-5035-9", 12.95, category1));
 			appBookRepository.save(new Book("Vuokralainen", "Freida McFadden", 2026, "978-951-1-54478-4", 29.95, category2));
 
-			// Demo users: admin and user
-			User user1 = new User("user", "$2a$10$CFOQI1lozwFgPQHshewnlurXtd1EYyH.aS29LbaZouptC5/Iki/K.", "user@user.com", "USER");
-			User user2 = new User("admin", "$2a$10$ACy2ifFpojzepChaW8sf/u43L2FRMHHMo.MmuIXNUrGZeNDu2W2zC", "admin@admin.com", "ADMIN");
-			appUserRepository.save(user1);
-			appUserRepository.save(user2);
+			//Check if there is already user data in the database
+			if (appUserRepository.count() == 0) {
+				// Demo users: admin and user
+				User user1 = new User("user", "$2a$10$CFOQI1lozwFgPQHshewnlurXtd1EYyH.aS29LbaZouptC5/Iki/K.", "user@user.com", "USER");
+				User user2 = new User("admin", "$2a$10$ACy2ifFpojzepChaW8sf/u43L2FRMHHMo.MmuIXNUrGZeNDu2W2zC", "admin@admin.com", "ADMIN");
+				appUserRepository.save(user1);
+				appUserRepository.save(user2);
+			}
+			
 			log.info("fetch all books");
 			for (Book book: appBookRepository.findAll()) {
 				log.info(book.toString());
