@@ -16,12 +16,12 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    // @JsonIgnoreProperties to avoid infinite loop
-    @JsonIgnoreProperties ("category")
     private Long categoryId;
-
+    
     private String name;
-
+    
+    // @JsonIgnoreProperties to avoid infinite loop
+    @JsonIgnoreProperties ("category") //ignore category of book
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Book>books;
     
