@@ -17,13 +17,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+/**
+ * BookController Request Endpoints:
+ * 
+ *  Login/logout: http://localhost:8080/login
+ *  Booklist: http://localhost:8080/allbooks
+ *  Add book: http://localhost:8080/add
+ *  H2-console: http://localhost:8080/h2-console
+ * 
+ */
 
-//H2-console request: http://localhost:8080/h2-console
 
 @Controller 
 public class BookController {
 
-    //Kontrollerin hyödyntämät repositoryt
+    /* Repositories */
     private final BookRepository bookRepository;
     private final CategoryRepository categoryRepository;
 
@@ -33,21 +41,15 @@ public class BookController {
 
     }
 
-    
-    // Booklist request: http://localhost:8080/allbooks
+    /* All */
     @GetMapping("/allbooks")
     public String bookList(Model model) {
         model.addAttribute("books", bookRepository.findAll());
         return "booklist";
     }
     
-    //Login request: http://localhost:8080
-/*     @GetMapping("/login")
-    public String loginSecure() {
-        return "login";
-    } */
     
-    // Add book request: http://localhost:8080/add
+    /* Add */
     @GetMapping("/add")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
@@ -55,19 +57,21 @@ public class BookController {
         return "addbook";
     }
 
-    // Save book request: http://localhost:8080/save
+    /* Save */
     @PostMapping("/save")
     public String saveBook(Book book) {
         bookRepository.save(book);
         return "redirect:/allbooks";
     }
 
+    /* Edit */
     @GetMapping("/edit/{id}")
     public String editBook(@PathVariable("id") Long bookId, Model model) {
         model.addAttribute("book", bookRepository.findById(bookId));
         return "editbook";
     }
 
+    /* Delete */
     @GetMapping("/delete/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String deleteBook(@PathVariable("id") Long bookId, Model model ) {
