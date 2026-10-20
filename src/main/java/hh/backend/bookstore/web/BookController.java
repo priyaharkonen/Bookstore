@@ -41,11 +41,11 @@ public class BookController {
         return "booklist";
     }
     
-    //Login request: http://localhost:8080/login
-    @GetMapping("/login")
+    //Login request: http://localhost:8080
+/*     @GetMapping("/login")
     public String loginSecure() {
         return "login";
-    }
+    } */
     
     // Add book request: http://localhost:8080/add
     @GetMapping("/add")

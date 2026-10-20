@@ -20,22 +20,11 @@ public class WebSecurityConfig {
 
         http
         .authorizeHttpRequests( authorize -> authorize
-            .requestMatchers("/", "/allbooks").permitAll()
-            /* .requestMatchers(toH2Console()).permitAll() */
+            .requestMatchers("/css/**","/", "/allbooks").permitAll() 
             .anyRequest().authenticated()
         )
-        /* 
-        .csrf(csrf -> csrf
-        .ignoringRequestMatchers(toH2Console())
-        )
 
-        .headers(headers -> headers
-            .frameOptions(frameoptions -> frameoptions
-                .disable())
-        )
-        */
         .formLogin( loginForm -> loginForm
-            .loginPage("/login")
             .defaultSuccessUrl("/allbooks", true)
             .permitAll()
         )
