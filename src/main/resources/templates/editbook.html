@@ -10,8 +10,7 @@
         <!-- Form -->
         <form th:object="${book}" th:action="@{../save}" action="#" method="post">
             <label for="id"></label>
-            <input type="hidden" id="id" th:field="*{id}" class="form-control" readonly="readonly" />
-
+            <input type="hidden" th:field="*{id}" />
             <label for="author">Author</label>
             <input type="text" th:field="*{author}" />
             <label for="title">Title</label>
@@ -23,8 +22,11 @@
             <label for="price">Price</label>
             <input type="number" step="any" th:field="*{price}" />
             <label for="ctgrylist">Category</label>
-            <input type="submit" value="Save"></input>
+            <select id="ctgrylist" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${categories}" th:value="${category.categoryId}" th:text="${category.name}"></option>
+    		</select>
 
+            <input type="submit" value="Save"></input>
         </form>
     </div>
    
