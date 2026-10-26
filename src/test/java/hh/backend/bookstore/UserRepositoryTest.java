@@ -2,12 +2,9 @@ package hh.backend.bookstore;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
-import org.springframework.boot.webmvc.autoconfigure.WebMvcProperties.Apiversion.Use;
 
 import hh.backend.bookstore.domain.User;
 import hh.backend.bookstore.domain.UserRepository;
