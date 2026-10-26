@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import hh.backend.bookstore.domain.UserRepository;
 import hh.backend.bookstore.web.BookController;
+import hh.backend.bookstore.web.CategoryController;
 
 
 @SpringBootTest
@@ -14,12 +16,32 @@ public class BookstoreApplicationTests {
 
 		@Autowired
 		private BookController bookController;
+		
+		@Autowired 
+		private CategoryController categoryController;
 
-
-	@Test
-	public void contextLoads() throws Exception {
+		@Autowired 
+		private UserRepository userRepository;
+		
+		
+		@Test
+		public void bookContextLoads() throws Exception {
 		assertThat(bookController).isNotNull();
+		
+		}
+		
+		@Test 
+		public void categoryContextLoads() throws Exception {
+		assertThat(categoryController).isNotNull();
+		}
+		
+		@Test 
+		public void userContextLoads() throws Exception {
+		assertThat(userRepository).isNotNull();
 
+		}
+		
 	}
 
-}
+	
+
