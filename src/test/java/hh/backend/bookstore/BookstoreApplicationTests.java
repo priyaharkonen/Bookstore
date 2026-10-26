@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import hh.backend.bookstore.domain.UserRepository;
+
 import hh.backend.bookstore.web.BookController;
 import hh.backend.bookstore.web.BookRestController;
 import hh.backend.bookstore.web.CategoryController;
