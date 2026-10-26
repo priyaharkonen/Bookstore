@@ -7,8 +7,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-/* import static org.springframework.boot.security.autoconfigure.web.servlet.PathRequest.toH2Console; */
-
 
 @Configuration 
 @EnableMethodSecurity(securedEnabled = true)
