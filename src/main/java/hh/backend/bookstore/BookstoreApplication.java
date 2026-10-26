@@ -45,8 +45,10 @@ public class BookstoreApplication {
 				// Demo users: admin and user
 				User user1 = new User("user", "$2a$10$CFOQI1lozwFgPQHshewnlurXtd1EYyH.aS29LbaZouptC5/Iki/K.", "user@user.com", "USER");
 				User user2 = new User("admin", "$2a$10$ACy2ifFpojzepChaW8sf/u43L2FRMHHMo.MmuIXNUrGZeNDu2W2zC", "admin@admin.com", "ADMIN");
+				User user3 = new User("testUser", "$2a$12$euF378L6oTaHQ4969OYhoOTvl591KmCuTPI/uZUzFrkUxVVP.zhJO", "testUser@user.com", "USER");
 				appUserRepository.save(user1);
 				appUserRepository.save(user2);
+				appUserRepository.save(user3);
 			}
 			
 			log.info("fetch all books");

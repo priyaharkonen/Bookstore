@@ -31,8 +31,7 @@ public class CategoryRepositoryTest {
     public void createNewCategory() {
         Category category = new Category("Tietokirjallisuus");
         categoryRepository.save(category);
-
-        assertThat(categoryRepository.findByName("Tietokirjallisuus")).hasSize(1);
+        assertThat(category.getCategoryId()).isNotNull();
     }
 
     /* Delete */

@@ -1,5 +1,6 @@
 package hh.backend.bookstore.domain;
 
+
 import org.springframework.data.repository.CrudRepository;
 
 
